@@ -4,9 +4,39 @@ pipeline {
         pollSCM('*/1 * * * *')
     }
     stages { 
-        stage('Build') {
+        stage('build') {
             steps {
-                sh "docker build -t api_test_executor . -f Dockerfile_executor"
+                echo "Building node application"
+            }
+        }
+        stage('deploy-dev') {
+            steps {
+                echo "Deploying to DEV"
+            }
+        }
+        stage('test-dev') {
+            steps {
+                echo "Testing to INT"
+            }
+        }
+        stage('deploy-int') {
+            steps {
+                echo "Deploying to INT"
+            }
+        }
+        stage('test-int') {
+            steps {
+                echo "Testing to DEV"
+            }
+        }
+        stage('deploy-prod') {
+            steps {
+                echo "Deploying to PROD"
+            }
+        }
+        stage('test-prod') {
+            steps {
+                echo "Testing to PROD"
             }
         }
     }
